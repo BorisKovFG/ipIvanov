@@ -11,7 +11,8 @@
     <link rel="stylesheet" href="{{ asset('assets/vendor/font-awesome/css/font-awesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/linearicons/style.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/metisMenu/metisMenu.css') }}">
-    <link rel="stylesheet" href="{{ asset('assets/vendor/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') }}">
+    <link rel="stylesheet"
+          href="{{ asset('assets/vendor/bootstrap-progressbar/css/bootstrap-progressbar-3.3.4.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/chartist/css/chartist.min.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/chartist-plugin-tooltip/chartist-plugin-tooltip.css') }}">
     <link rel="stylesheet" href="{{ asset('assets/vendor/toastr/toastr.min.css') }}">
@@ -37,7 +38,8 @@
             </div>
             <!-- logo -->
             <div class="navbar-brand">
-                <a href="index.html"><img src="{{ asset('assets/img/logo.png') }}" alt="DiffDash Logo" class="img-responsive logo"></a>
+                <a href="index.html"><img src="{{ asset('assets/img/logo.png') }}" alt="DiffDash Logo"
+                                          class="img-responsive logo"></a>
             </div>
             <!-- end logo -->
         </div>
@@ -51,9 +53,11 @@
         </button>
         <div class="sidebar-scroll">
             <div class="user-account">
-                <img src="{{ asset('assets/img/user.png') }}" class="img-responsive img-circle user-photo" alt="User Profile Picture">
+                <img src="{{ asset('assets/img/user.png') }}" class="img-responsive img-circle user-photo"
+                     alt="User Profile Picture">
                 <div class="dropdown">
-                    <a href="#" class="dropdown-toggle user-name" data-toggle="dropdown">Hello, <strong>Austin Hoffman</strong> <i class="fa fa-caret-down"></i></a>
+                    <a href="#" class="dropdown-toggle user-name" data-toggle="dropdown">Hello, <strong>Austin
+                            Hoffman</strong> <i class="fa fa-caret-down"></i></a>
                     <ul class="dropdown-menu dropdown-menu-right account">
                         <li><a href="#">My Profile</a></li>
                         <li><a href="#">Messages</a></li>
@@ -65,9 +69,12 @@
             </div>
             <nav id="left-sidebar-nav" class="sidebar-nav">
                 <ul id="main-menu" class="metismenu">
-                    <li class="active"><a href="{{ route('admin.main.index') }}"><i class="lnr lnr-home"></i> <span>Main</span></a></li>
-                    <li class="active"><a href="{{ route('admin.clients.index') }}"><i class="lnr lnr-users"></i> <span>Clients</span></a></li>
-                    <li class="active"><a href="{{ route('admin.fertilizers.index') }}"><i class="lnr lnr-poop"></i> <span>Fertilizers</span></a></li>
+                    <li class="active"><a href="{{ route('admin.main.index') }}"><i class="lnr lnr-home"></i>
+                            <span>Main</span></a></li>
+                    <li class="active"><a href="{{ route('admin.clients.index') }}"><i class="lnr lnr-users"></i> <span>Clients</span></a>
+                    </li>
+                    <li class="active"><a href="{{ route('admin.fertilizers.index') }}"><i class="lnr lnr-poop"></i>
+                            <span>Fertilizers</span></a></li>
 
                 </ul>
             </nav>
@@ -78,17 +85,14 @@
     <div id="main-content">
         <div class="container-fluid">
             <!-- WEBSITE ANALYTICS -->
-            <div class="dashboard-section">
-
-            <!-- SOCIAL -->
-                  @yield('content')
-            <!-- END SOCIAL -->
+            @yield('content')
         </div>
     </div>
     <!-- END MAIN CONTENT -->
     <div class="clearfix"></div>
     <footer>
-        <p class="copyright">&copy; 2022 <a href="https://ipivanov.test" target="_blank">IP Ivanov </a>The best poop quality</p>
+        <p class="copyright">&copy; 2022 <a href="https://ipivanov.test" target="_blank">IP Ivanov </a>The best poop
+            quality</p>
     </footer>
 </div>
 <!-- END WRAPPER -->
@@ -106,10 +110,10 @@
 <script src="{{ asset('assets/vendor/toastr/toastr.js') }}"></script>
 <script src="{{ asset('assets/scripts/common.js') }}"></script>
 <script>
-    $(function() {
+    $(function () {
 
         // sparkline charts
-        var sparklineNumberChart = function() {
+        var sparklineNumberChart = function () {
 
             var params = {
                 width: '140px',
@@ -139,13 +143,13 @@
         };
 
         var labels = ['Direct', 'Organic', 'Referral'];
-        var sum = function(a, b) {
+        var sum = function (a, b) {
             return a + b;
         };
 
         new Chartist.Pie('#demo-pie-chart', dataPie, {
             height: "270px",
-            labelInterpolationFnc: function(value, idx) {
+            labelInterpolationFnc: function (value, idx) {
                 var percentage = Math.round(value / dataPie.series.reduce(sum) * 100) + '%';
                 return labels[idx] + ' (' + percentage + ')';
             }
@@ -209,7 +213,7 @@
 
 
         // sales performance chart
-        var sparklineSalesPerformance = function() {
+        var sparklineSalesPerformance = function () {
 
             var lastWeekData = [142, 164, 298, 384, 232, 269, 211];
             var currentWeekData = [352, 267, 373, 222, 533, 111, 60];
@@ -243,7 +247,7 @@
         sparklineSalesPerformance();
 
         var sparkResize;
-        $(window).on('resize', function() {
+        $(window).on('resize', function () {
             clearTimeout(sparkResize);
             sparkResize = setTimeout(sparklineSalesPerformance, 200);
         });
@@ -266,7 +270,7 @@
                 showGrid: false
             },
             axisY: {
-                labelInterpolationFnc: function(value) {
+                labelInterpolationFnc: function (value) {
                     return (value / 1000) + 'k';
                 }
             },
@@ -278,7 +282,7 @@
                     legendNames: ['Phone', 'Laptop', 'PC']
                 })
             ]
-        }).on('draw', function(data) {
+        }).on('draw', function (data) {
             if (data.type === 'bar') {
                 data.element.attr({
                     style: 'stroke-width: 30px'

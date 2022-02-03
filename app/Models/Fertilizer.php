@@ -23,7 +23,7 @@ class Fertilizer extends Model
         'purpose',
     ];
 
-    public function cultere_group()
+    public function cultureGroup()
     {
         return $this->belongsTo(CultureGroup::class, 'culture_group_id', 'id');
     }
