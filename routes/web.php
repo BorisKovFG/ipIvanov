@@ -18,21 +18,21 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     });
     Route::group(['prefix' => 'fertilizers', 'namespace' => 'Fertilizers'], function () {
         Route::get('/', 'IndexController')->name('admin.fertilizers.index');
-//        Route::get('/create', 'CreateController')->name('admin.fertilizers.create');
-//        Route::post('/', 'StoreController')->name('admin.fertilizers.store');
-//        Route::get('/{fertilizer}', 'ShowController')->name('admin.fertilizers.show');
-//        Route::get('/{fertilizer}/edit', 'EditController')->name('admin.fertilizers.edit');
-//        Route::patch('/{fertilizer}', 'UpdateController')->name('admin.fertilizers.update');
-//        Route::delete('/{fertilizer}', 'DestroyController')->name('admin.fertilizers.destroy');
+        Route::get('/create', 'CreateController')->name('admin.fertilizers.create');
+        Route::post('/', 'StoreController')->name('admin.fertilizers.store');
+        Route::get('/{fertilizer}', 'ShowController')->name('admin.fertilizers.show');
+        Route::get('/{fertilizer}/edit', 'EditController')->name('admin.fertilizers.edit');
+        Route::patch('/{fertilizer}', 'UpdateController')->name('admin.fertilizers.update');
+        Route::delete('/{fertilizer}', 'DestroyController')->name('admin.fertilizers.destroy');
     });
     Route::group(['prefix' => 'clients', 'namespace' => 'Clients'], function () {
         Route::get('/', 'IndexController')->name('admin.clients.index');
-//        Route::get('/create', 'CreateController')->name('admin.clients.create');
-//        Route::post('/', 'StoreController')->name('admin.clients.store');
-//        Route::get('/{fertilizer}', 'ShowController')->name('admin.clients.show');
-//        Route::get('/{fertilizer}/edit', 'EditController')->name('admin.clients.edit');
-//        Route::patch('/{fertilizer}', 'UpdateController')->name('admin.clients.update');
-//        Route::delete('/{fertilizer}', 'DestroyController')->name('admin.clients.destroy');
+        Route::get('/create', 'CreateController')->name('admin.clients.create');
+        Route::post('/', 'StoreController')->name('admin.clients.store');
+        Route::get('/{client}', 'ShowController')->name('admin.clients.show');
+        Route::get('/{client}/edit', 'EditController')->name('admin.clients.edit');
+        Route::patch('/{client}', 'UpdateController')->name('admin.clients.update');
+        Route::delete('/{client}', 'DestroyController')->name('admin.clients.destroy');
     });
 });
 
