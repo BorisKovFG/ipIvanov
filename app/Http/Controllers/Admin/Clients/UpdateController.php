@@ -3,12 +3,16 @@
 namespace App\Http\Controllers\Admin\Clients;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Admin\Clients\UpdateRequest;
+use App\Models\Client;
 
 class UpdateController extends Controller
 {
-    public function __invoke()
+    public function __invoke(UpdateRequest $request, Client $client)
     {
-        return view('admin.clients.index');
+        $data = $request->validated();
+        $data['agreement_date'] = date('Y-m-d', strtotime($data['agreement_date']));
+        $client->update($data);
+        return redirect()->route('admin.clients.show', compact('client'));
     }
 }

@@ -71,7 +71,7 @@
                 <ul id="main-menu" class="metismenu">
                     <li class="active"><a href="{{ route('admin.main.index') }}"><i class="lnr lnr-home"></i>
                             <span>Main</span></a></li>
-                    <li class="active"><a href="{{ route('admin.clients.index') }}"><i class="lnr lnr-users"></i> <span>Clients</span></a>
+                    <li class="active"><a href="{{ route('admin.clients.index') }}"><i class="lnr lnr-layers"></i> <span>Clients</span></a>
                     </li>
                     <li class="active"><a href="{{ route('admin.fertilizers.index') }}"><i class="lnr lnr-poop"></i>
                             <span>Fertilizers</span></a></li>
@@ -109,8 +109,15 @@
 <script src="{{ asset('assets/vendor/chartist-plugin-legend-latest/chartist-plugin-legend.js') }}"></script>
 <script src="{{ asset('assets/vendor/toastr/toastr.js') }}"></script>
 <script src="{{ asset('assets/scripts/common.js') }}"></script>
+<script src="{{ asset('assets/vendor/bootstrap-datepicker/js/bootstrap-datepicker.min.js') }}"></script>
+
 <script>
     $(function () {
+
+        // Date picker
+        $('.inline-datepicker').datepicker({
+            format: 'YYYY-MM-DD',
+        });
 
         // sparkline charts
         var sparklineNumberChart = function () {
@@ -289,7 +296,6 @@
                 });
             }
         });
-
 
         // notification popup
         toastr.options.closeButton = true;

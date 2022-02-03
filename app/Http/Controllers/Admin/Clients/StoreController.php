@@ -3,12 +3,17 @@
 namespace App\Http\Controllers\Admin\Clients;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Admin\Clients\StoreRequest;
+use App\Models\Client;
+
 
 class StoreController extends Controller
 {
-    public function __invoke()
+    public function __invoke(StoreRequest $request)
     {
-        return view('admin.clients.index');
+        $data = $request->validated();
+        $data['agreement_date'] = date('Y-m-d', strtotime($data['agreement_date']));
+        $client = Client::firstOrCreate($data);
+        return redirect()->route('admin.clients.show', compact('client'));
     }
 }

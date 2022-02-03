@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Admin\Clients;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Client;
+
 
 class CreateController extends Controller
 {
     public function __invoke()
     {
-        return view('admin.clients.index');
+        $client = new Client();
+        return view('admin.clients.create', compact( 'client'));
     }
 }

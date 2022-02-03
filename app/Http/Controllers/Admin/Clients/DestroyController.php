@@ -3,12 +3,14 @@
 namespace App\Http\Controllers\Admin\Clients;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Models\Client;
+
 
 class DestroyController extends Controller
 {
-    public function __invoke()
+    public function __invoke(Client $client)
     {
-        return view('admin.clients.index');
+        $client->delete();
+        return redirect()->route('admin.clients.index');
     }
 }
