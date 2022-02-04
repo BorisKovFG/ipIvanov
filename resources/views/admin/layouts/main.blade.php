@@ -71,6 +71,8 @@
                 <ul id="main-menu" class="metismenu">
                     <li class="active"><a href="{{ route('admin.main.index') }}"><i class="lnr lnr-home"></i>
                             <span>Main</span></a></li>
+                    <li class="active"><a href="{{ route('admin.users.index') }}"><i class="lnr lnr-users"></i>
+                            <span>Users</span></a></li>
                     <li class="active"><a href="{{ route('admin.clients.index') }}"><i class="lnr lnr-layers"></i> <span>Clients</span></a>
                     </li>
                     <li class="active"><a href="{{ route('admin.fertilizers.index') }}"><i class="lnr lnr-poop"></i>
