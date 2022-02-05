@@ -303,7 +303,7 @@
         toastr.options.closeButton = true;
         toastr.options.positionClass = 'toast-bottom-right';
         toastr.options.showDuration = 1000;
-        toastr['info']('Hello, Mr. ivanov.'); //TODO userName
+        toastr['info']('Hello, {{ (!empty(auth()->user())) ? auth()->user()->name : 'Man' }}.'); //TODO userName
 
     });
 </script>
