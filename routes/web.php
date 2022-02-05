@@ -27,6 +27,17 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         Route::post('/{fertilizer}', 'RestoreController')->name('admin.fertilizers.restore');
     });
 
+    Route::group(['prefix' => 'culture-groups', 'namespace' => 'CultureGroups'], function () {
+        Route::get('/', 'IndexController')->name('admin.culturegroups.index');
+        Route::get('/create', 'CreateController')->name('admin.culturegroups.create');
+        Route::post('/', 'StoreController')->name('admin.culturegroups.store');
+        Route::get('/{cultureGroup}', 'ShowController')->name('admin.culturegroups.show');
+        Route::get('/{cultureGroup}/edit', 'EditController')->name('admin.culturegroups.edit');
+        Route::patch('/{cultureGroup}', 'UpdateController')->name('admin.culturegroups.update');
+        Route::delete('/{cultureGroup}', 'DestroyController')->name('admin.culturegroups.destroy');
+        Route::post('/{cultureGroup}', 'RestoreController')->name('admin.culturegroups.restore');
+    });
+
     Route::group(['prefix' => 'clients', 'namespace' => 'Clients'], function () {
         Route::get('/', 'IndexController')->name('admin.clients.index');
         Route::get('/create', 'CreateController')->name('admin.clients.create');

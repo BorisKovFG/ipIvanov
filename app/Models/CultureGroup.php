@@ -17,4 +17,9 @@ class CultureGroup extends Model
         'name',
     ];
 
+    public function fertilizers()
+    {
+        return $this->hasMany(Fertilizer::class, 'culture_group_id', 'id');
+    }
+
 }

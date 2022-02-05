@@ -77,7 +77,8 @@
                     </li>
                     <li class="active"><a href="{{ route('admin.fertilizers.index') }}"><i class="lnr lnr-poop"></i>
                             <span>Fertilizers</span></a></li>
-
+                    <li class="active"><a href="{{ route('admin.culturegroups.index') }}"><i class="lnr lnr-paperclip"></i>
+                            <span>Culture Groups</span></a></li>
                 </ul>
             </nav>
         </div>
