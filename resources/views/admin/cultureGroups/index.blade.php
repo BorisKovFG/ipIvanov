@@ -15,7 +15,7 @@
                 <a href="{{ route('admin.culturegroups.index', ['status' => 'deleted']) }}" class="right">View deleted
                     culture groups</a>
             </div>
-            <div class="table-responsive">
+            <div class="table-responsive col-md-8">
                 <table class="table table-striped no-margin">
                     <thead>
                     <tr>

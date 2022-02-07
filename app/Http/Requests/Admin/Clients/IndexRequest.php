@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\CultureGroup;
+namespace App\Http\Requests\Admin\Clients;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FilterRequest extends FormRequest
+class IndexRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -24,6 +24,10 @@ class FilterRequest extends FormRequest
     public function rules()
     {
         return [
+            'name' => 'string',
+            'agreement_date' => 'array',
+            'delivery_cost' => 'array',
+            'region' => 'string',
             'status' => 'string',
         ];
     }

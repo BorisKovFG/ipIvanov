@@ -3,21 +3,24 @@
 namespace App\Http\Controllers\Admin\Fertilizers;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Fertilizer\FilterRequest;
-use App\Models\Client;
+use App\Http\Filters\Admin\FertilizerFilter;
+use App\Http\Requests\Admin\Fertilizer\IndexRequest;
 use App\Models\Fertilizer;
-use Illuminate\Http\Request;
 
 class IndexController extends Controller
 {
-    public function __invoke(FilterRequest $request)
+    public function __invoke(IndexRequest $request)
     {
         $data = $request->validated();
-        if (!empty($data) && $data['status'] === 'deleted') { // TODO find better answer for this if
-            $fertilizers = Fertilizer::onlyTrashed()->get();
-        } else {
-            $fertilizers = Fertilizer::all();
-        }
+        $filter = app()->make(FertilizerFilter::class, ['queryParams' => array_filter($data)]);
+        $fertilizers = Fertilizer::filter($filter)->get();
+//        $query = Fertilizer::query();
+//        if (isset($data['status'])) {
+//            $query->onlyTrashed();
+//            $fertilizers = $query->get();
+//        } else {
+//            $fertilizers = Fertilizer::all();
+//        }
         return view('admin.fertilizers.index', compact('fertilizers'));
     }
 }

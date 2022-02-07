@@ -1,10 +1,10 @@
 <?php
 
-namespace App\Http\Requests\Admin\Fertilizer;
+namespace App\Http\Requests\Admin\CultureGroup;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class FilterRequest extends FormRequest
+class IndexRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.

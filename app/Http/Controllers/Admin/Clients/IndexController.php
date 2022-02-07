@@ -3,21 +3,18 @@
 namespace App\Http\Controllers\Admin\Clients;
 
 use App\Http\Controllers\Controller;
-use App\Http\Requests\Admin\Clients\FilterRequest;
+use App\Http\Filters\Admin\ClientFilter;
+use App\Http\Requests\Admin\Clients\IndexRequest;
 use App\Models\Client;
 
 
 class IndexController extends Controller
 {
-    public function __invoke(FilterRequest $request)
+    public function __invoke(IndexRequest $request)
     {
         $data = $request->validated();
-        if (!empty($data) && $data['status'] === 'deleted') { // TODO find better answer for this if
-            $clients = Client::onlyTrashed()->get();
-        }
-        else {
-            $clients = Client::all();
-        }
+        $filter = app()->make(ClientFilter::class, ['queryParams' => array_filter($data)]);
+        $clients = Client::filter($filter)->get();
         return view('admin.clients.index', compact('clients'));
     }
 }
