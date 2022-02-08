@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin\Fertilizers;
 use App\Http\Controllers\Controller;
 use App\Http\Filters\Admin\FertilizerFilter;
 use App\Http\Requests\Admin\Fertilizer\IndexRequest;
+use App\Models\CultureGroup;
 use App\Models\Fertilizer;
 
 class IndexController extends Controller
@@ -14,6 +15,8 @@ class IndexController extends Controller
         $data = $request->validated();
         $filter = app()->make(FertilizerFilter::class, ['queryParams' => array_filter($data)]);
         $fertilizers = Fertilizer::filter($filter)->get();
+        $cultureGroups = CultureGroup::all();
+
 //        $query = Fertilizer::query();
 //        if (isset($data['status'])) {
 //            $query->onlyTrashed();
@@ -21,6 +24,6 @@ class IndexController extends Controller
 //        } else {
 //            $fertilizers = Fertilizer::all();
 //        }
-        return view('admin.fertilizers.index', compact('fertilizers'));
+        return view('admin.fertilizers.index', compact('fertilizers', 'cultureGroups'));
     }
 }

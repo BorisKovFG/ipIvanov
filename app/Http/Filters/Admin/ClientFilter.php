@@ -4,6 +4,7 @@ namespace App\Http\Filters\Admin;
 
 use App\Http\Filters\AbstractFilter;
 use Illuminate\Database\Eloquent\Builder;
+use function PHPUnit\Framework\matches;
 
 class ClientFilter extends AbstractFilter
 {
@@ -12,6 +13,7 @@ class ClientFilter extends AbstractFilter
     public const DELIVERY_COST = 'delivery_cost';
     public const REGION = 'region';
     public const STATUS = 'status';
+    public const SORT = 'sort';
 
 
     protected function getCallbacks(): array
@@ -22,6 +24,8 @@ class ClientFilter extends AbstractFilter
             self::DELIVERY_COST => [$this, 'deliveryCost'],
             self::REGION => [$this, 'region'],
             self::STATUS => [$this, 'status'],
+            self::SORT => [$this, 'sort'],
+
         ];
     }
 
@@ -29,6 +33,7 @@ class ClientFilter extends AbstractFilter
     {
         $builder->where('name', 'like', "%{$value}%");
     }
+
     public function agreementDate(Builder $builder, $value)
     {
         $builder->whereBetween('agreement_date', [$value['begin'], $value['end']]);
@@ -48,6 +53,25 @@ class ClientFilter extends AbstractFilter
     {
         if ($value === 'deleted') {
             $builder->onlyTrashed();
+        }
+    }
+
+    public function sort(Builder $builder, $value)
+    {
+        //match() only since php 8.0
+        switch ($value) {
+            case 'nameDesc':
+                $builder->orderBy('name', 'desc');
+                break;
+            case 'nameAsc':
+                $builder->orderBy('name', 'asc');
+                break;
+            case 'deliveryCostDesc':
+                $builder->orderBy('delivery_cost', 'desc');
+                break;
+            case 'deliveryCostAsc':
+                $builder->orderBy('delivery_cost', 'asc');
+                break;
         }
     }
 }

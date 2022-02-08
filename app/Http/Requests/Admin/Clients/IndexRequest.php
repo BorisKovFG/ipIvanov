@@ -29,6 +29,7 @@ class IndexRequest extends FormRequest
             'delivery_cost' => 'array',
             'region' => 'string',
             'status' => 'string',
+            'sort' => 'string'
         ];
     }
 }

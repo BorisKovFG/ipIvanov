@@ -17,6 +17,8 @@ class FertilizerFilter extends AbstractFilter
     public const DESCRIPTION = 'description';
     public const PURPOSE = 'purpose';
     public const STATUS = 'status';
+    public const SORT = 'sort';
+
 
 
     protected function getCallbacks(): array
@@ -32,6 +34,8 @@ class FertilizerFilter extends AbstractFilter
             self::DESCRIPTION => [$this, 'description'],
             self::PURPOSE => [$this, 'purpose'],
             self::STATUS => [$this, 'status'],
+            self::SORT => [$this, 'sort'],
+
         ];
     }
 
@@ -84,6 +88,24 @@ class FertilizerFilter extends AbstractFilter
     {
         if ($value === 'deleted') {
             $builder->onlyTrashed();
+        }
+    }
+    public function sort(Builder $builder, $value)
+    {
+        //match() only since php 8.0
+        switch ($value) {
+            case 'nameDesc':
+                $builder->orderBy('name', 'desc');
+                break;
+            case 'nameAsc':
+                $builder->orderBy('name', 'asc');
+                break;
+            case 'priceDesc':
+                $builder->orderBy('price', 'desc');
+                break;
+            case 'priceAsc':
+                $builder->orderBy('price', 'asc');
+                break;
         }
     }
 }

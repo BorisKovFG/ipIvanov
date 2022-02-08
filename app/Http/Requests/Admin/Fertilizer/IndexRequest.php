@@ -34,6 +34,7 @@ class IndexRequest extends FormRequest
             'description' => 'string',
             'purpose' => 'string',
             'status' => 'string',
+            'sort' => 'string'
         ];
     }
 }
