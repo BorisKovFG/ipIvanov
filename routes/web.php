@@ -61,10 +61,11 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     });
 });
 
-
 Route::get('/', function () {
-    return redirect()->route('home');
-});
+    return view('start');
+})->name('main.index');
+
+Route::get('/start', 'StartFertilizers')->name('start');
 
 Auth::routes();
 
