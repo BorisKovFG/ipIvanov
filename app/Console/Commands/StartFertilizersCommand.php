@@ -2,6 +2,7 @@
 
 namespace App\Console\Commands;
 
+use App\Models\Role;
 use App\Models\User;
 use Illuminate\Console\Command;
 use Illuminate\Support\Facades\Artisan;
@@ -29,6 +30,11 @@ class StartFertilizersCommand extends Command
      */
     public function handle()
     {
+        $dataRole = [
+            'name' => 'Admin'
+        ];
+        Role::create($dataRole);
+
         $userIpIvanov = [
             'name' => 'IP Ivanov',
             'email' => 'start@poop.test',

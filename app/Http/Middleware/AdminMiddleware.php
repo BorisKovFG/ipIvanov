@@ -16,7 +16,7 @@ class AdminMiddleware
      */
     public function handle(Request $request, Closure $next)
     {
-        if (auth()->user()->role->name !== "Admin") {
+        if (empty(auth()->user()->role->name) || auth()->user()->role->name !== "Admin") {
             abort(404);
         } //TODO checking with roles
         return $next($request);
