@@ -22,7 +22,7 @@ class DatabaseSeeder extends Seeder
         $dataRole = [
             'name' => 'Admin'
         ];
-        Role::create($dataRole);
+        Role::firstOrCreate($dataRole);
 
         $userAdminData = [
             'name' => 'MR Ivanov',
@@ -32,7 +32,7 @@ class DatabaseSeeder extends Seeder
             'remember_token' => Str::random(10),
             'role_id' => Role::get()->where('name', 'Admin')->first()->id
         ];
-        User::create($userAdminData);
+        User::firstOrCreate($userAdminData);
 
         // \App\Models\User::factory(10)->create();
     }
