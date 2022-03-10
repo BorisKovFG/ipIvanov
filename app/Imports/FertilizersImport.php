@@ -27,7 +27,6 @@ class FertilizersImport implements ToCollection, WithHeadingRow
                     'description' => $row['opisanie'],
                     'purpose' => $row['naznacenie'],
                 ]);
-                print_r($fertilizer->id . ":" . $fertilizer->name . " imported \n");
             }
         }
         print_r("Import has finished\n");

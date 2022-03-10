@@ -5,6 +5,19 @@
         <div class="col-md-2">
             <a href="{{ route('admin.fertilizers.create') }}" class="btn btn-block btn-primary">Create fertilizer</a>
         </div>
+        <div class="col-md-2">
+            <form action="{{ route('admin.fertilizers.import') }}" method="POST" enctype="multipart/form-data">
+                @csrf
+                <input type="file" name="import_fertilizers" class="margin-bottom-15">
+                <button type="submit" class="btn btn-primary">Import list of fertilizers</button>
+                @error('import_fertilizers')
+                <div class="text-danger">{{ $message }}</div>
+                @enderror
+            </form>
+            @if (session('status'))
+                <p class="help-block"><em>{{ session('status') }}</em></p>
+            @endif
+        </div>
     </div>
     <div class="col-md-12">
         <div class="panel-content">
@@ -129,14 +142,15 @@
                             <div class="input-group col-md-3">
                                 <form id="basic-form" method="get">
                                     @csrf
-                                        <div class="form-group">
-                                            <label class="control-label">Culture group:</label>
-                                            <select multiple="" name="culture_group_id[]" class="form-control">
-                                                @foreach($cultureGroups as $cultureGroup)
-                                                    <option value="{{ $cultureGroup->id }}">{{ $cultureGroup->name }}</option>
-                                                @endforeach
-                                            </select>
-                                        </div>
+                                    <div class="form-group">
+                                        <label class="control-label">Culture group:</label>
+                                        <select multiple="" name="culture_group_id[]" class="form-control">
+                                            @foreach($cultureGroups as $cultureGroup)
+                                                <option
+                                                    value="{{ $cultureGroup->id }}">{{ $cultureGroup->name }}</option>
+                                            @endforeach
+                                        </select>
+                                    </div>
                                     <button type="submit" class="btn btn-default input-sm form-control">Filter</button>
                                 </form>
                             </div>
@@ -252,6 +266,5 @@
             </tbody>
         </table>
     </div>
-    </div>
-    </div>
+
 @endsection

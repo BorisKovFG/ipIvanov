@@ -26,9 +26,9 @@ class ClientsImport implements ToCollection, WithHeadingRow
                     'delivery_cost' => $row['stoimost_postavki'],
                     'region' => $row['region'],
                 ]);
-                print_r($client->id . ":" . $client->name . " imported \n");
+//                print_r($client->id . ":" . $client->name . " imported \n");
             }
         }
-        print_r("Import has finished\n");
+//        print_r("Import has finished\n");
     }
 }

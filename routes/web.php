@@ -25,6 +25,7 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         Route::patch('/{fertilizer}', 'UpdateController')->name('admin.fertilizers.update');
         Route::delete('/{fertilizer}', 'DestroyController')->name('admin.fertilizers.destroy');
         Route::post('/{fertilizer}', 'RestoreController')->name('admin.fertilizers.restore');
+        Route::post('/', 'ImportController')->name('admin.fertilizers.import');
     });
 
     Route::group(['prefix' => 'culture-groups', 'namespace' => 'CultureGroups'], function () {

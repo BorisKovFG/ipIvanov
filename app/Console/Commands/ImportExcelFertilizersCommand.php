@@ -29,6 +29,6 @@ class ImportExcelFertilizersCommand extends Command
     public function handle()
     {
         $filePath = public_path().'/Excel/import/Шаблон импорта удобрений.xlsx';
-        Excel::import(new FertilizersImport(), $filePath);
+        Excel::import(new FertilizersImport(), $filePath,'local');
     }
 }
