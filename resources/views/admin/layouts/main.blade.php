@@ -53,7 +53,7 @@
         </button>
         <div class="sidebar-scroll">
             <div class="user-account">
-                <img src="{{ asset('assets/img/user.png') }}" class="img-responsive img-circle user-photo"
+                <img src="{{ !empty(auth()->user()->icon) ? asset('storage/'. auth()->user()->icon) : asset('assets/img/user.png') }}" class="img-responsive img-circle user-photo"
                      alt="User Profile Picture">
                 <div class="dropdown">
                     <a href="#" class="dropdown-toggle user-name" data-toggle="dropdown">Hello, <strong>Austin

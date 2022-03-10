@@ -13,6 +13,7 @@ class Fertilizer extends Model
     use SoftDeletes;
     use Filterable;
 
+
     protected $table = 'fertilizers';
 
     protected $fillable = [

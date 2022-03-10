@@ -23,6 +23,13 @@
     @enderror
 </div>
 <div class="form-group">
+    <label>Icon:</label>
+    <input type="file" name="icon" {{ isset($user->icon) ? '' : 'required' }}>
+    @error('password')
+    <div class="text-danger">{{ $message }}</div>
+    @enderror
+</div>
+<div class="form-group">
     <br/>
     <label>Role:</label>
     <select id="single-selection" name="role_id" class="multiselect multiselect-custom">

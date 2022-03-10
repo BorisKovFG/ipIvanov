@@ -11,7 +11,8 @@
                     <h3 class="heading"><i class="fa fa-square"></i> Information:</h3>
                     <ul class="list-unstyled list-justify">
                         <li class="clearfix"><b>E-mail</b> <span>{{ $user->email }}</span></li>
-                        <li class="clearfix"><b>Role</b>  <span>{{ $user->role->name}}</span></li>
+                        <li class="clearfix"><b>Role</b> <span>{{ $user->role->name}}</span></li>
+                        <li class="clearfix"><b>Icon</b> <span><img src="{{ asset('storage/'. $user->icon) }}" alt="icon" style="max-width: 50%;"></span></li>
                     </ul>
                 </div>
             </div>
