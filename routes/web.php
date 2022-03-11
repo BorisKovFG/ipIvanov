@@ -60,6 +60,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
         Route::delete('/{user}', 'DestroyController')->name('admin.users.destroy');
         Route::post('/{user}', 'RestoreController')->name('admin.users.restore');
     });
+    Route::group(['prefix' => 'import-statuses', 'namespace' => 'ImportStatuses'], function () {
+        Route::get('/', 'IndexController')->name('admin.import_statuses.index');
+    });
 });
 
 Route::get('/', function () {

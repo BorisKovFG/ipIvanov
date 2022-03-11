@@ -79,6 +79,8 @@
                             <span>Fertilizers</span></a></li>
                     <li class="active"><a href="{{ route('admin.culturegroups.index') }}"><i class="lnr lnr-paperclip"></i>
                             <span>Culture Groups</span></a></li>
+                    <li class="active"><a href="{{ route('admin.import_statuses.index') }}"><i class="lnr lnr-chart-bars"></i>
+                            <span>Import Status</span></a></li>
                 </ul>
             </nav>
         </div>
