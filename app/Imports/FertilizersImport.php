@@ -5,12 +5,21 @@ namespace App\Imports;
 use App\Models\Fertilizer;
 //use Illuminate\Support\Collection;
 //use Maatwebsite\Excel\Concerns\ToCollection;
+use Maatwebsite\Excel\Concerns\Importable;
+use Maatwebsite\Excel\Concerns\SkipsErrors;
+use Maatwebsite\Excel\Concerns\SkipsFailures;
+use Maatwebsite\Excel\Concerns\SkipsOnError;
+use Maatwebsite\Excel\Concerns\SkipsOnFailure;
 use Maatwebsite\Excel\Concerns\ToModel;
 use Maatwebsite\Excel\Concerns\WithHeadingRow;
 use Maatwebsite\Excel\Concerns\WithValidation;
+use Maatwebsite\Excel\Validators\Failure;
+use Throwable;
 
-class FertilizersImport implements ToModel, WithHeadingRow, WithValidation
+class FertilizersImport implements ToModel, WithHeadingRow, WithValidation, SkipsOnFailure, SkipsOnError
 {
+    use Importable, SkipsFailures, SkipsErrors;
+
     public function model(array $row): Fertilizer
     {
         return new Fertilizer([
@@ -40,6 +49,10 @@ class FertilizersImport implements ToModel, WithHeadingRow, WithValidation
             'naznacenie' => 'nullable',
         ];
     }
+
+    /**
+     * @return array
+     */
 }
 
 //    public function collection(Collection $collection)

@@ -42,11 +42,17 @@ class ImportFertilizersJob implements ShouldQueue
      */
     public function handle()
     {
+        $import = new FertilizersImport();
         try {
-            if (Excel::import(new FertilizersImport(), $this->filePath)) {
+            $import->import($this->filePath);
+            $failRows = [];
+            foreach ($import->failures() as $failure) {
+                $failRows[] = $failure->row();
+            }
+            if (empty($failRows)) {
                 $this->importStatus->update(['status' => $this->statusMapping['success']]);
             } else {
-                $this->importStatus->update(['status' => $this->statusMapping['error']]);
+                $this->importStatus->update(['status' => $this->statusMapping['error'], 'fails' => $failRows]);
             }
         } catch (Exception $e) {
             $this->importStatus->update(['status' => $this->statusMapping['error']]);

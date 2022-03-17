@@ -20,7 +20,8 @@ class ImportStatus extends Model
 
     protected $fillable = [
         'status',
-        'user_id'
+        'user_id',
+        'fails'
     ];
 
     public function getStatus($id): string
