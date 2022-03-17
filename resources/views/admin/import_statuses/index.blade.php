@@ -24,6 +24,8 @@
                 <th>Status</th>
                 <th>The user who imported</th>
                 <th>Created at</th>
+                <th>Fail rows</th>
+
             </tr>
             </thead>
             <tbody>
@@ -33,6 +35,7 @@
                     <td>{{ $status->getStatus($status->status) }}</td>
                     <td>{{ $status->user->name }}</td>
                     <td>{{ $status->created_at }}</td>
+                    <td>{{ empty($status->fails) ? '' : implode(', ', json_decode($status->fails)) }}</td>
                 </tr>
             @endforeach
             </tbody>
