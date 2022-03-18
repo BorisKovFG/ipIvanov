@@ -5,7 +5,11 @@
         <div class="col-md-2">
             <a href="{{ route('admin.clients.create') }}" class="btn btn-block btn-primary">Create client</a>
         </div>
+        <div class="col-md-2">
+            <a href="{{ route('admin.clients.export') }}" class="btn btn-primary">Download list</a>
+        </div>
     </div>
+
     <div class="col-md-12">
         <div class="panel-content">
             <div class="section-heading clearfix">

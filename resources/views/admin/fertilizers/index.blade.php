@@ -18,6 +18,9 @@
                 <p class="help-block"><em>{{ session('status') }}</em></p>
             @endif
         </div>
+        <div>
+            <a href="{{ route('admin.fertilizers.export') }}" class="btn btn-primary">Download list</a>
+        </div>
     </div>
     <div class="col-md-12">
         <div class="panel-content">
