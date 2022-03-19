@@ -134,7 +134,7 @@
                         <th>Delivery cost</th>
                         <th>Region</th>
                         <th
-                            colspan="{{ (Request::query() === ['status' => 'deleted']) ? '1' : '2' }}">Actions
+                            colspan="{{ (Request::query() === ['status' => 'deleted']) ? '1' : '3' }}">Actions
                         </th>
                     </tr>
                     </thead>
@@ -146,6 +146,8 @@
                             <td>{{ $client->delivery_cost }}</td>
                             <td>{{ $client->region }}</td>
                             @if(Request::query() !== ['status' => 'deleted'])
+                                <td><a href="{{ route('admin.clients.contract', $client) }}"
+                                       class="btn btn-success btn-xs btn-block">Contract</a></td>
                                 <td><a href="{{ route('admin.clients.edit', $client) }}"
                                        class="btn btn-warning btn-xs btn-block">Edit</a></td>
                                 <td>

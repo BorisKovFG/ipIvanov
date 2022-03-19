@@ -43,7 +43,9 @@ Route::group(['prefix' => 'admin', 'namespace' => 'Admin', 'middleware' => ['aut
     Route::group(['prefix' => 'clients', 'namespace' => 'Clients'], function () {
         Route::get('/', 'IndexController')->name('admin.clients.index');
         Route::get('/create', 'CreateController')->name('admin.clients.create');
+        //TODO if will be more then 2 exports, add new namespace for exports
         Route::get('/export', 'ExportController')->name('admin.clients.export');
+        Route::get('/contract/{client}', 'ContractController')->name('admin.clients.contract');
         Route::post('/', 'StoreController')->name('admin.clients.store');
         Route::get('/{client}', 'ShowController')->name('admin.clients.show');
         Route::get('/{client}/edit', 'EditController')->name('admin.clients.edit');
